@@ -23,8 +23,6 @@ export const useCheckAuth = () => {
     
     }, [])
 
-    return {
-        status
-    }
+    return status
 
 }
