@@ -1,17 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { collection, doc, setDoc } from "firebase/firestore/lite";
+import { FirebaseDB } from "../../firebase/config";
 
-export const journalSlice = createSlice({
-   name: 'journal',
-   initialState: {
-       counter: 10
-   },
-   reducers: {
-       increment: (state, /* action */ ) => {
-           state.counter += 1;
-       },
+export const startNewNote = () => {
+    return async( dispatch, getState ) => {
+
+        const { uid } = getState().auth;
+
+        const newNote = {
+            title: '',
+            body: '',
+            date: new Date().getTime(),
+        }
+
+        const newDoc = doc( collection( FirebaseDB, `${ uid }/journal/notes` ) );
+        const setDocResp = await setDoc( newDoc, newNote );
+        
+        console.log({ setDocResp, newDoc })
+        // dispatch
+        // dispatch( newNote )
+        // dispatch( activarNote )
     }
-});
-
-
-// Action creators are generated for each case reducer function
-export const { increment } = journalSlice.actions;
+}
