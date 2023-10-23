@@ -1,10 +1,10 @@
 
-import { IconButton } from "@mui/material"
-import { JournalLayout } from "../layout/JournalLayout"
-import { NothingSelectedView, NoteView } from "../views"
 import { AddOutlined } from "@mui/icons-material"
-import { startNewNote } from "../../store/journal/thunks"
+import { IconButton } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
+import { startNewNote } from "../../store/journal/thunks"
+import { JournalLayout } from "../layout/JournalLayout"
+import { NoteView, NothingSelectedView } from "../views"
 
 export const JournalPage = () => {
 
