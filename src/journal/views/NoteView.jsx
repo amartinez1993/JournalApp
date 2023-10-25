@@ -11,7 +11,7 @@ import { useForm } from "../../hooks/useForm"
 
 
 import { setActiveNote } from "../../store/journal/journalSlice"
-import { startSaveNote } from "../../store/journal/thunks"
+import { startSaveNote, startUploadingFiles } from "../../store/journal/thunks"
 
 
 export const NoteView = () => {
@@ -44,10 +44,7 @@ export const NoteView = () => {
 
     const onFileInputChange = ({ target }) => {
         if ( target.files === 0 ) return;
-
-        console.log('subiendo archivos')
-        //dispatch( startUploadingFiles( target.files ));
-        
+        dispatch( startUploadingFiles( target.files ));
     }
 
     return (
